@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=devce-width, initial-scale=1.0">
+        <title>SFSU Meets</title>
+        <link rel="stylesheet" href="stylesheets/regi-stylesheet.css">
+        <link rel="icon" href="images/GatorLogo_blk.png" type="image">
+    </head>
+    <body>
+        <header>
+            <a href="index.html"><img src="images/headerImg.png" alt="Homepage Link" style="width: auto;height: 56px;"></a>
+        </header>
+        <nav>
+            
+        </nav>
+        <main>
+            <form action="/account_page.html">
+            <div class="container">
+                <h1>Register</h1>
+                <p>To create an account please fill in this form.</p>
+                <hr>
+                <label for="first_name"><b>First Name</b></label>
+                <input type="text" placeholder="Enter First Name" name="first_name" id="first_name" required>
+
+                <label for="last_name"><b>Last Name</b></label>
+                <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name" required>
+                <br>
+                <label for="sfsu_id"><b>SFSU ID</b></label>
+                <input type="text" placeholder="Enter your SFSU ID" name="sfsu_id" id="sfsu_id" pattern="[0-9]{9}" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+                <label for="pass"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+
+                <label for="pass-repeat"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Re-enter Password" name="pass-repeat" id="pass-repeat" required>
+
+                <button type="submit" class="register_button">Register</button>
+                <hr>
+                <p>Already have an account? <a href="login.html">Login in!</a></p>
+            </div>
+            </form>
+        </main>
+        <br>
+        <footer>
+            <a href="index.html">Home</a>
+            |
+            <a href="about.html">About</a>
+            |
+            <a href="faq.html">FAQ</a>
+            |
+            <a href="contact.html">Contact</a>
+            <br><br>
+            <a href="https://github.com/CSC317-2023-Fall/csc317-group-project-website-ColeChiodo" target="_blank"><img src="images/github.svg" alt="github link"></a><br>
+            <br>
+            SFSU Meets<br>
+            Window Group
+        </footer>
+        
+    </body>
+</html>
