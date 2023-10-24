@@ -1,0 +1,90 @@
+hr{
+    border: 1px solid #b0b0b0;
+    margin-bottom: 25px;
+}
+
+.item1{grid-area: main;}
+.item2{grid-area: menu;}
+
+.mainContainer{
+    display: grid;
+    grid-template-areas: 
+        'main main main main menu menu';
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+.mainContainer > div{
+    background-color: white;
+    text-align: left;
+    border: solid gainsboro;
+    border-radius: 5px;
+    padding: 40px 20px;
+
+    font-size: 20px;
+    button{
+        font-size: 100%;
+        color: #b700ff;
+        background-color: #fff;
+        border: 1px solid #b700ff;
+        padding: 5px 20px;
+    }
+    button:hover{
+        color: #fff;
+        background-color: #b700ff;
+        box-shadow: 0 0 20px #b700ff;
+    }
+}
+
+.eventimg{
+    background-color: #333;
+    grid-area: eventimg;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.eventdesc{
+    grid-area: main;
+    padding: 10px;
+}
+
+.events{
+    display: grid;
+    grid-template-areas: 
+        'eventimg eventimg main main main';
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    p{
+        max-lines: 3;
+    }
+}
+
+.orgimg{
+    background-color: #333;
+    grid-area: orgimg;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.orgdesc{
+    grid-area: main;
+    padding: 10px;
+}
+
+.orgs{
+    display: grid;
+    grid-template-areas: 
+        'orgimg orgimg main main';
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    p{
+        max-lines: 2;
+    }
+}
