@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=devce-width, initial-scale=1.0">
-        <title>SFSU Meets</title>
+        <title>Sign Up - SFSU Meets</title>
         <link rel="stylesheet" href="stylesheets/stylesheet.css">
         <link rel="stylesheet" href="stylesheets/regi-stylesheet.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
@@ -19,16 +19,14 @@
                 <li class="dropdown">
                     <a class="dropbtn">Organizations ▾</a>
                     <div class="dropdown-content">
-                        <a href="about.html">All Organizations</a>
-                        <a href="faq.html">Your Organizations</a>
-                        <a href="contact.html">Create an Organization</a>
+                        <a href="organizations.html">All Organizations</a>
+                        <a href="createorganization.html">Create an Organization</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a class="dropbtn">Events ▾</a>
                     <div class="dropdown-content">
-                        <a href="about.html">All Events</a>
-                        <a href="faq.html">Your Events</a>
+                        <a href="events.html">All Events</a>
                         <a href="contact.html">Create an Event</a>
                     </div>
                 </li>
@@ -44,6 +42,12 @@
                     <form action="search.php" method="post">
                         <input type="text" name="search" placeholder="Search">
                         <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
+                    </form>
+                </li>
+                <li>
+                    <form>
+                        <button class="log" type="submit" formaction="login.html">Login</button>
+                        <button class="reg" type="submit" formaction="signup.html">Sign Up</button>
                     </form>
                 </li>
             </ul>
