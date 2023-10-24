@@ -23,6 +23,23 @@ hr{
     border: solid gainsboro;
     border-radius: 5px;
     padding: 20px 10px;
-
     font-size: 16px;
+}
+
+.grid-container > .item2{
+    img{
+        border: solid gainsboro;
+        border-radius: 5px;
+    }
+}
+
+.grid-container > .item1{
+    line-height: 40px;
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+    a:hover{
+        color: gray;
+    }
 }

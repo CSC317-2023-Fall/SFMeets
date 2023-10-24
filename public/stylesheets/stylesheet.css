@@ -68,7 +68,7 @@ li img.logo{
   padding: 0px 35px;
 }
 
-li a, form, .dropbtn {
+li a, li form, .dropbtn {
   display: inline-block;
   color: white;
   font-size: 150%;

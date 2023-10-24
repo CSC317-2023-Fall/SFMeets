@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=devce-width, initial-scale=1.0">
         <title>SFSU Meets</title>
+        <link rel="stylesheet" href="stylesheets/stylesheet.css">
         <link rel="stylesheet" href="stylesheets/login-stylesheet.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
     </head>
@@ -11,8 +12,41 @@
         <header>
             <a href="index.html"><img src="images/headerImg.png" alt="Homepage Link" style="width: auto;height: 56px;"></a>
         </header>
-        <nav>
-            
+        <nav id="navBar">
+            <ul>
+                <li><img class="logo" src="images/headerImg.png"></li>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropbtn">Organizations ▾</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">All Organizations</a>
+                        <a href="faq.html">Your Organizations</a>
+                        <a href="contact.html">Create an Organization</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropbtn">Events ▾</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">All Events</a>
+                        <a href="faq.html">Your Events</a>
+                        <a href="contact.html">Create an Event</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropbtn">Help ▾</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">About</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </li>
+                <li>
+                    <form action="search.php" method="post">
+                        <input type="text" name="search" placeholder="Search">
+                        <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
+                    </form>
+                </li>
+            </ul>
         </nav>
         <main>
             <form action="/account_page.html">
@@ -22,10 +56,10 @@
                 <hr>
             
                 <label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                <input type="email" placeholder="Enter Email" name="email_login" id="email_login" required>
 
                 <label for="pass"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+                <input type="password" placeholder="Enter Password" name="pass_login" id="pass_login" required>
 
                 <button type="submit" class="login_button">Login</button>
                 <hr>

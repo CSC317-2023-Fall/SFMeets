@@ -1,11 +1,8 @@
 body{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: gainsboro;
 }
 
-*{
-    box-sizing: border-box;
-}
+
 
 .container{
     padding: 16px;
@@ -16,37 +13,40 @@ body{
     a{
         color: #808080;
     }
-}
 
-input[type=text], input[type=password], input[type=email]{
+    input[type=text], input[type=password], input[type=email]{
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1
-}
+    }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     background-color: #ddd;
     outline: none;
-}
+    }
 
-#first_name, #last_name{
+    *{
+    box-sizing: border-box;
+    }
+
+    #first_name, #last_name{
     width: 30%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1
-}
+    }
 
-hr{
+    hr{
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
-}
+    }
 
-.register_button{
+    .register_button{
     background-color: palevioletred;
     color: white;
     padding: 16px 20px;
@@ -55,53 +55,21 @@ hr{
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
-}
-
-footer{
-    background-color: #333;
-    color: #808080;
-    font-size: 115%;
-    padding: 1em;
-    text-align: center;
-    a{
-      color: #808080;
     }
-    img{
-      width: 50px;
-      filter: invert(25%);
-    }
-}
 
-header{
-    background-color: #b700ff;
-    background-image: url("../images/headerBackground.jpg");
-    color: #fff;
-    font-size: 150%;
-    padding: 1em;
-    text-align: center;
-    table{
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 7px;
-      padding: 10px 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      button{
-        font-size: 100%;
-        color: #b700ff;
-        background-color: #fff;
-        border: 1px solid #b700ff;
-        padding: 5px 20px;
-      }
-      button:hover{
-        color: #fff;
-        background-color: #b700ff;
-        box-shadow: 0 0 20px #b700ff;
-      }
-    }
-}
-
-.register_button:hover{
+    .register_button:hover{
     opacity: 1;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
