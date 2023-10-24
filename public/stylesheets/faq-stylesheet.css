@@ -1,0 +1,33 @@
+.faq-text {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1px;
+    font-size: 30px;
+}
+
+.faq-container {
+    border: 3px solid #b700ff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.faq-item {
+    font-family: Arial;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.question {
+    font-size: 20px;
+    color: #333;
+}
+
+.answer {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
