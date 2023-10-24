@@ -1,0 +1,42 @@
+#organizations ul {
+    display: block;
+    background-color: white;
+    width: 40%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#organizations li.organization {
+    display: flex;
+    color: black;
+    float: none;
+    justify-content: center;
+    padding: 1%;
+    border: 3px solid #b700ff;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+#organizations img {
+    height: 256px;
+    width: 256px;
+    border-radius: 50%;
+}
+
+.organzationinfo {
+    border: 1px solid blue;
+}
+
+.organizationname {
+    font-size: 22px;
+    margin: auto;
+    font-weight: bold;
+}
+
+.organizationdescription {
+    margin: auto;
+    padding: 5%;
+    width: 70%;
+    align-items: center;
+}

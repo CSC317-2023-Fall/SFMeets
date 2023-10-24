@@ -1,0 +1,47 @@
+#events ul {
+    display: block;
+    background-color: white;
+    width: 40%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#events li.event {
+    display: flex;
+    color: black;
+    float: none;
+    justify-content: center;
+    padding: 1%;
+    border: 3px solid #b700ff;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+#events img {
+    height: 256px;
+    width: 256px;
+}
+
+.eventheader {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    height: 15%;
+    align-items: center;
+    width: 70%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 10%;
+}
+
+.eventname {
+    font-size: 22px;
+}
+
+.eventdescription {
+    /* border: 1px solid orange; */
+    padding-left: 10%;
+    margin-left: 10%;
+    width: 70%;
+}

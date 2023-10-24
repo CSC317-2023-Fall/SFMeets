@@ -1,0 +1,144 @@
+#organizations ul {
+    display: block;
+    background-color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+}
+
+#organizations li.organization {
+    display: flex;
+    color: black;
+    float: none;
+    justify-content: center;
+    padding: 1%;
+    border: 3px solid #b700ff;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+#organizations img {
+    height: 256px;
+    width: 256px;
+    border-radius: 50%;
+}
+
+.organzationinfo {
+    border: 1px solid blue;
+}
+
+.organizationname {
+    font-size: 22px;
+    margin: auto;
+    font-weight: bold;
+}
+
+.organizationdescription {
+    /* border: 1px solid orange; */
+    /* padding-left: 10%; */
+    /* margin-left: 10%; */
+    margin: auto;
+    padding: 5%;
+    width: 70%;
+    align-items: center;
+}
+
+main .top {
+    display: flex;
+    justify-content: space-around;
+}
+
+#organizations {
+    width: 65%;
+}
+
+#members {
+    width: 35%;
+}
+
+#members ul {
+    display: block;
+    background-color: white;
+    height: 95%;
+    margin: 1%;
+}
+
+.member {
+    color: black;
+    border: 3px solid #b700ff;
+    border-radius: 10px;
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#members img {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+
+.events h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#events ul {
+    display: flex;
+    background-color: white;
+    height: 95%;
+    margin: auto;
+    width: 100%;
+    flex-direction: column;
+}
+
+#events li {
+    display: flex;
+    color: black;
+    float: none;
+    justify-content: center;
+    padding: 1%;
+    border: 3px solid #b700ff;
+    padding: 5px;
+    margin: 50px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.eventname {
+    font-size: 22px;
+    margin: auto;
+    font-weight: bold;
+}
+
+.eventheader {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    height: 15%;
+    align-items: center;
+    width: 70%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 10%;
+}
+
+
+.eventdescription {
+    /* border: 1px solid orange; */
+    /* padding-left: 10%; */
+    /* margin-left: 10%; */
+    margin: auto;
+    padding: 5%;
+    width: 70%;
+    align-items: center;
+}
+
+#members h1 {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+}
