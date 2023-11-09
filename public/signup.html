@@ -73,14 +73,29 @@
                 <label for="pass"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pass_sign" id="pass_sign" required>
 
-                <label for="pass-repeat"><b>Confirm Password</b></label>
-                <input type="password" placeholder="Re-enter Password" name="pass-repeat" id="pass-repeat" required>
+                <div class="pass_pop" id="pass_pop">
+                    <h3>Must contain the following:</h3>
+                    <p id="lower" class="invalid">A lowercase letter</p>
+                    <p id="upper" class="invalid">A uppercase latter</p>
+                    <p id="number" class="invalid">A number</p>
+                    <p id="min" class="invalid">Minumum of 8 characters</p>
+                </div>
+
+                <label for="pass_repeat"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Re-enter Password" name="pass_repeat" id="pass_repeat" required>
+
+                <div class="pass_check" id="pass_check">
+                    <p id="same" class="invalid">Does not match</p>
+                </div>
 
                 <button type="submit" formmethod="get" class="register_button">Register</button>
                 <hr>
                 <p>Already have an account? <a href="login.html">Login in!</a></p>
+
+                
             </div>
             </form>
+            
         </main>
         <br>
         <footer>
@@ -97,6 +112,90 @@
             SFSU Meets<br>
             Window Group
         </footer>
-        
+        <script>
+            const userInput = document.getElementById("pass_sign");
+            const checkpass = document.getElementById("pass_repeat");
+            const lower = document.getElementById("lower");
+            const upper = document.getElementById("upper");
+            const number = document.getElementById("number");
+            const min = document.getElementById("min");
+
+            userInput.onfocus = function(){
+                document.getElementById("pass_pop").style.display = "block";
+            }
+
+            userInput.onblur = function(){
+                document.getElementById("pass_pop").style.display = "none"
+            }
+
+            userInput.onkeyup = function(){
+                const lowerCheck = /[a-z]/g;
+                if(userInput.value.match(lowerCheck)){
+                    lower.classList.remove("invalid");
+                    lower.classList.add("valid");
+                }else{
+                    lower.classList.remove("valid");
+                    lower.classList.add("invalid");
+                }
+
+                const upperCheck = /[A-Z]/g;
+                if(userInput.value.match(upperCheck)){
+                    upper.classList.remove("invalid");
+                    upper.classList.add("valid");
+                }else{
+                    upper.classList.remove("valid");
+                    upper.classList.add("invalid");
+                }
+
+                const numberCheck = /[0-9]/g;
+                if(userInput.value.match(numberCheck)){
+                    number.classList.remove("invalid");
+                    number.classList.add("valid");
+                }else{
+                    number.classList.remove("valid");
+                    number.classList.add("invalid");
+                }
+
+                if(userInput.value.length >= 8){
+                    min.classList.remove("invalid");
+                    min.classList.add("valid");
+                }else{
+                    min.classList.remove("valid");
+                    min.classList.add("invalid");
+                }
+            }
+
+            checkpass.onfocus = function(){
+                document.getElementById("pass_check").style.display = "block";
+            }
+
+            checkpass.onblur = function(){
+                document.getElementById("pass_check").style.display = "none";
+            }
+
+            checkpass.onkeyup = function(){
+                if(checkpass.value == (userInput.value)){
+                    same.classList.remove("invalid");
+                    same.classList.add("valid");
+                }else{
+                    same.classList.remove("valid");
+                    same.classList.add("invalid");
+                }
+            }
+
+            checkpass.onclick = function(){
+                if(checkpass.value == (userInput.value)){
+                    same.classList.remove("invalid");
+                    same.classList.add("valid");
+                }else{
+                    same.classList.remove("valid");
+                    same.classList.add("invalid");
+                }
+            }
+
+            
+
+
+        </script>
     </body>
 </html>

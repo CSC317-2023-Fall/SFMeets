@@ -60,6 +60,42 @@ body{
     .register_button:hover{
     opacity: 1;
     }
+
+    #pass_pop, #pass_check{
+        position: relative;
+        display: none;
+        cursor: pointer;
+        background: #f1f1f1;
+        padding: 20px;
+    }
+
+    #pass_pop p, #pass_check p{
+        padding: 18px 35px;
+        font-size: 14px;
+    }
+
+    .valid{
+        color:green;
+    }
+
+    .valid:before{
+        position: relative;
+        left: -35px;
+        content: "✓";
+    }
+
+    .invalid{
+        color: red;
+    }
+
+    .invalid::before{
+        position: relative;
+        left: -35px;
+        content: "✘";
+    }
+
+
+
 }
 
 
