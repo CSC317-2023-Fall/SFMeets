@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="stylesheets/login-stylesheet.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
     </head>
-    <body>
+    <body onload="checkLogin()">
         <header>
             <a href="index.html"><img src="images/headerImg.png" alt="Homepage Link" style="width: auto;height: 56px;"></a>
         </header>
@@ -53,7 +53,7 @@
             </ul>
         </nav>
         <main>
-            <form action="/account_page.html">
+            <form id="login_form">
             <div class="container">
                 <h1>Login</h1>
                 <p>Please enter your detail to login.</p>
@@ -65,7 +65,7 @@
                 <label for="pass"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pass_login" id="pass_login" required>
 
-                <button type="submit" class="login_button">Login</button>
+                <button type="submit" class="login_button" id="login_button">Login</button>
                 <hr>
                 <p>Don't have an account? <a href="signup.html">Sign up!</a></p>
                 
@@ -87,6 +87,62 @@
             SFSU Meets<br>
             Window Group
         </footer>
+
+        <script>
+            const log_form = document.getElementById("login_form");
+            const log_button = document.getElementById("login_button");
+            
+
+            log_button.addEventListener("click", (l) => {
+                l.preventDefault();
+                const log_email = log_form.email_login.value;
+                const log_pass = log_form.pass_login.value;
+
+                if(log_email === "admin" && log_pass === "admin"){
+                    alert("You have log in as an admin!");
+                    setCookie("email", log_email, 14);
+                    setCookie("pass", log_pass, 14);
+                    setCookie("fname", "Mighty", 14);
+                    setCookie("lname", "Teapot", 14);
+                    setCookie("idNum", "123456789", 14);
+                    setCookie("club", "Guildwars 2", 14);
+                    setCookie("loggedIn", true, 14);
+                    location.replace("/account_page.html");
+                }
+            })
+
+            function setCookie(cname, cvalue, exdays){
+                const exp = new Date();
+                exp.setTime(exp.getTime() + (exdays*24*69*60*1000));
+                let expires = "expires=" + exp.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookies(cname){
+                let name = cname + "=";
+                let contentCookie = decodeURIComponent(document.cookie);
+                let ca = contentCookie.split(';');
+                for(let i = 0; i < ca.length; i++){
+                    let c = ca[i];
+                    while (c.charAt(0) == ' '){
+                        c = c.substring(1);    
+                    }
+                    if(c.indexOf(name) == 0){
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkLogin(){
+                let logged = getCookies("loggedIn");
+                if(logged === "true"){
+                    alert("You have already logged in");
+                    location.replace("/account_page.html");
+                }
+            }
+
+        </script>
         
     </body>
 </html>
