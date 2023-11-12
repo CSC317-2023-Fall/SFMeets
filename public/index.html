@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="stylesheets/index.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
     </head>
-    <body>
+    <body onload="onloadEvent()">
         <header>
-            <table>
+            <table id="welcome">
                 <tr>
                     <td>
                         <img src="images/GatorLogo_wht.png" alt="Alligator Logo">
@@ -60,14 +60,20 @@
                         <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
                     </form>
                 </li>
-                <li>
+                <li id="loginbuttons">
                     <form>
                         <button class="log" type="submit" formaction="login.html">Login</button>
                         <button class="reg" type="submit" formaction="signup.html">Sign Up</button>
                     </form>
                 </li>
+                <li class="dropdown" id="accountinfo">
+                    <a class="dropbtn" id="name"></a>
+                    <div class="dropdown-content">
+                        <a href="account_page.html">Profile</a>
+                        <a href="" id="logoutbutton" onclick="logout()">Logout</a>
+                    </div>
             </ul>
-            <script src="scripts/navbarlock.js"></script>
+            <script src="scripts/navbar.js"></script>
         </nav>
         <main>
             <div class="mainContainer">
