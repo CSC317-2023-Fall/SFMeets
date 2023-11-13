@@ -36,16 +36,16 @@ function onloadEvent(){
     if(logged === "true"){
         welcommessage.remove();
         loginbuttons.remove();
+        let fname = getCookies("fname");
+        let lname = getCookies("lname");
+
+        let name = fname + " " + lname + " ▾";
+        document.getElementById("name").innerHTML = name;
+        sticky = navbar.offsetTop;
     }
     else{
         accountinfo.remove();
     }
-
-    let fname = getCookies("fname");
-    let lname = getCookies("lname");
-
-    let name = fname + " " + lname + " ▾";
-    document.getElementById("name").innerHTML = name;
 }
 
 function logout(){

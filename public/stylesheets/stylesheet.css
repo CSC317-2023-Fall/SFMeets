@@ -1,6 +1,9 @@
 body{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+nav{
+  z-index: 1;
+}
 header{
     background-color: #b700ff;
     background-image: url("../images/headerBackground.jpg");
