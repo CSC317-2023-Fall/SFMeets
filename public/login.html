@@ -58,6 +58,10 @@
                 <h1>Login</h1>
                 <p>Please enter your detail to login.</p>
                 <hr>
+
+                <div id="errorMsg" class="errorMsg">
+
+                </div>
             
                 <label for="email"><b>Email</b></label>
                 <input type="email" placeholder="Enter Email" name="email_login" id="email_login" required>
@@ -91,13 +95,14 @@
         <script>
             const log_form = document.getElementById("login_form");
             const log_button = document.getElementById("login_button");
+            const fade = document.querySelector('.errorMsg');
             
 
             log_button.addEventListener("click", (l) => {
                 l.preventDefault();
                 const log_email = log_form.email_login.value;
                 const log_pass = log_form.pass_login.value;
-
+                
                 if(log_email === "admin" && log_pass === "admin"){
                     alert("You have log in as an admin!");
                     setCookie("email", log_email, 14);
@@ -108,6 +113,10 @@
                     setCookie("club", "Guildwars 2", 14);
                     setCookie("loggedIn", true, 14);
                     location.replace("/account_page.html");
+                }else{
+                    document.getElementById("errorMsg").style.padding = "3px";
+                    document.getElementById("errorMsg").style.border = "thin solid darkred";
+                    document.getElementById("errorMsg").innerHTML = "<p>Invalid Login Credentials</p>";
                 }
             })
 
@@ -141,6 +150,7 @@
                     location.replace("/account_page.html");
                 }
             }
+
 
         </script>
         

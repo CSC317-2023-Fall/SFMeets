@@ -58,6 +58,11 @@
                 <h1>Register</h1>
                 <p>To create an account please fill in this form.</p>
                 <hr>
+
+                <div id="errorMsg_sign" class="errorMsg_sign">
+
+                </div>
+
                 <label for="first_name"><b>First Name</b></label>
                 <input type="text" placeholder="Enter First Name" name="first_name" id="first_name" required>
 
@@ -88,7 +93,7 @@
                     <p id="same" class="invalid">Does not match</p>
                 </div>
 
-                <button type="submit" formmethod="get" class="register_button">Register</button>
+                <button type="submit" formmethod="get" class="register_button" id="register_button">Register</button>
                 <hr>
                 <p>Already have an account? <a href="login.html">Login in!</a></p>
 
@@ -119,6 +124,8 @@
             const upper = document.getElementById("upper");
             const number = document.getElementById("number");
             const min = document.getElementById("min");
+            const regi_button = document.getElementById("register_button");
+            const same = document.getElementById("same");
 
             userInput.onfocus = function(){
                 document.getElementById("pass_pop").style.display = "block";
@@ -193,9 +200,51 @@
                 }
             }
 
+            function setCookie(cname, cvalue, exdays){
+                const exp = new Date();
+                exp.setTime(exp.getTime() + (exdays*24*69*60*1000));
+                let expires = "expires=" + exp.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookies(cname){
+                let name = cname + "=";
+                let contentCookie = decodeURIComponent(document.cookie);
+                let ca = contentCookie.split(';');
+                for(let i = 0; i < ca.length; i++){
+                    let c = ca[i];
+                    while (c.charAt(0) == ' '){
+                        c = c.substring(1);    
+                    }
+                    if(c.indexOf(name) == 0){
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function checkLogin(){
+                let logged = getCookies("loggedIn");
+                if(logged === "true"){
+                    alert("You have already logged in");
+                    location.replace("/account_page.html");
+                }
+            }
+
+            regi_button.addEventListener("click" , (s) => {
+                s.preventDefault();
+                if(lower.classList.contains("valid") && upper.classList.contains("valid") && same.classList.contains("valid") 
+                && number.classList.contains("valid") && min.classList.contains("valid")){
+                    alert("Sign up successful");
+                    location.replace("/login.html");
+                }else{
+                    document.getElementById("errorMsg_sign").style.padding = "3px";
+                    document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
+                    document.getElementById("errorMsg_sign").innerHTML = "<p>A Section Was Incorrectly Filled Out</p>";
+                }
+            })
+
             
-
-
         </script>
     </body>
 </html>

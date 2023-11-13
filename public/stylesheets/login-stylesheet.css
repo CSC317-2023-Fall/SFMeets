@@ -51,6 +51,14 @@ body{
     .login_button:hover{
     opacity: 1;
     }
+
+    .errorMsg{
+        background-color: lightcoral;
+        text-align: center;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 
