@@ -9,7 +9,7 @@
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
         <script src="scripts/events.js"></script>
     </head>
-    <body>
+    <body onload="onloadEvent()">
         <header>
             <br>
         </header>
@@ -40,8 +40,10 @@
                     </div>
                 </li>
                 <li>
-                    <input type="text" name="search" placeholder="Search">
-                    <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
+                    <form action="search.php" method="post">
+                        <input type="text" name="search" placeholder="Search">
+                        <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
+                    </form>
                 </li>
                 <li id="loginbuttons">
                     <form>
