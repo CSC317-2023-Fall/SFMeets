@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="stylesheets/stylesheet.css">
         <link rel="stylesheet" href="stylesheets/events.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
+        <script src="scripts/events.js"></script>
     </head>
     <body>
         <header>
@@ -39,74 +40,33 @@
                     </div>
                 </li>
                 <li>
-                    <form action="search.php" method="post">
-                        <input type="text" name="search" placeholder="Search">
-                        <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
-                    </form>
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
                 </li>
-                <li>
+                <li id="loginbuttons">
                     <form>
                         <button class="log" type="submit" formaction="login.html">Login</button>
                         <button class="reg" type="submit" formaction="signup.html">Sign Up</button>
                     </form>
                 </li>
+                <li class="dropdown" id="accountinfo">
+                    <a class="dropbtn" id="name"></a>
+                    <div class="dropdown-content">
+                        <a href="account_page.html">Profile</a>
+                        <a href="" id="logoutbutton" onclick="logout()">Logout</a>
+                    </div>
             </ul>
+            <script src="scripts/navbar.js"></script>
         </nav>
         <main>
             <div class="filtersect" id="event_filter">
-                <button class="btn active">Show All</button>
-                <button class="btn">Today</button>
-                <button class="btn">This Week</button>
-                <button class="btn">This Month</button>
+                <button id="showallbutton" class="btn active">Show All</button>
+                <button id="todaybutton" id="showallbutton" class="btn">Today</button>
+                <button id="thisweekbutton" class="btn">This Week</button>
+                <button id="thismonthbutton" class="btn">This Month</button>
             </div>
             <div id="events">
                 <ul>
-                    <li class="event">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="eventinfo">
-                            <div class="eventheader">
-                                <p class="eventname">Star Night</p>
-                                <p class="users">0/1000</p>
-                                <button class="join">Join</button>
-                            </div>
-                            <p class="eventdescription">
-                                Embark on a celestial journey with our school's Astronomy Club. Set against the backdrop of a clear night sky on the school's field, participants will have the opportunity to use telescopes, learn about different constellations, and immerse themselves in the wonders of our universe. Whether you're an astronomy enthusiast or just curious, this event promises a night of discovery and wonder.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="event">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="eventinfo">
-                            <div class="eventheader">
-                                <p class="eventname">Retro Sports Day</p>
-                                <p class="users">0/100</p>
-                                <button class="join">Join</button>
-                            </div>
-                            <p class="eventdescription">Travel back in time with traditional games from the past! From sack races and egg-and-spoon races to tug of war and hopscotch, students will have a chance to compete in teams and relive the fun-filled games of yesteryears. Vintage attire encouraged!</p>
-                        </div>
-                    </li>
-                    <li class="event">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="eventinfo">
-                            <div class="eventheader">
-                                <p class="eventname">Cultural Culinary Fair</p>
-                                <p class="users">0/10</p>
-                                <button class="join">Join</button>
-                            </div>
-                            <p class="eventdescription">Dive into the world of flavors with our Cultural Culinary Fair. Hosted by the International Students Association, booths will be set up representing countries from around the globe. Discover traditional dishes, learn about their origins, and maybe even pick up a recipe or two to try at home.</p>
-                        </div>
-                    </li>
-                    <li class="event">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="eventinfo">
-                            <div class="eventheader">
-                                <p class="eventname">Heritage Feast</p>
-                                <p class="users">0/5</p>
-                                <button class="join">Join</button>
-                            </div>
-                            <p class="eventdescription">Celebrate the rich tapestry of cultures at our school with the Heritage Feast. Organized by the International Students Association, this event showcases traditional dishes from across the globe. Wander from stall to stall, savoring flavors, and learning about the history and significance of each dish. It's not just a feast for your taste buds but also an enriching cultural experience.</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </main>
