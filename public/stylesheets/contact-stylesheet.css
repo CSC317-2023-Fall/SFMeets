@@ -1,6 +1,9 @@
 .contact {
     width: 60%;
     margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -56,4 +59,15 @@ input[type=message] {
 
 .submit_button:hover {
     opacity: 1;
+}
+
+#success-message {
+    display: none;
+    color: #3c7436;
+    background-color: #a7d8af;
+    border: 2px solid #2b873b;
+    padding: 10px;
+    margin-top: 15px;
+    text-align: center;
+    border-radius: 5px;
 }
