@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=devce-width, initial-scale=1.0">
         <title>Organizations - SFSU Meets</title>
         <link rel="stylesheet" href="stylesheets/stylesheet.css">
-        <link rel="stylesheet" href="stylesheets/organizations.css">
+        <link id ='stylesheet' rel="stylesheet" href="stylesheets/organizations.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
+        <script src="scripts/organizations.js"></script>
     </head>
     <body>
         <header>
@@ -20,7 +21,8 @@
                     <a class="dropbtn">Organizations ▾</a>
                     <div class="dropdown-content">
                         <a href="organizations.html">All Organizations</a>
-                        <a href="createorganization.html">Create an Organization</a>
+                        <!-- <a href="createorganization.html">Create an Organization</a> -->
+                        <a href='' class="createorganization">Create organization</a>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -39,10 +41,8 @@
                     </div>
                 </li>
                 <li>
-                    <form action="search.php" method="post">
-                        <input type="text" name="search" placeholder="Search">
-                        <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
-                    </form>
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
                 </li>
                 <li>
                     <form>
@@ -53,44 +53,9 @@
             </ul>
         </nav>
         <main>
-            <div class="filtersect" id="organization_filter">
-                <button class="btn active">Show All</button>
-                <button class="btn">Today</button>
-                <button class="btn">This Week</button>
-                <button class="btn">This Month</button>
-            </div>
             <div id="organizations">
+                <button class="createanorganization">Create an Organization</button>
                 <ul>
-                    <li class="organization">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="organizationinfo">
-                            <p class="organizationname">Star Night</p>
-                            <p class="organizationdescription">
-                                Embark on a celestial journey with our school's Astronomy Club. Set against the backdrop of a clear night sky on the school's field, participants will have the opportunity to use telescopes, learn about different constellations, and immerse themselves in the wonders of our universe. Whether you're an astronomy enthusiast or just curious, this event promises a night of discovery and wonder.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="organization">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="organizationinfo">
-                            <p class="organizationname">Retro Sports Day</p>
-                            <p class="organizationdescription">Travel back in time with traditional games from the past! From sack races and egg-and-spoon races to tug of war and hopscotch, students will have a chance to compete in teams and relive the fun-filled games of yesteryears. Vintage attire encouraged!</p>
-                        </div>
-                    </li>
-                    <li class="organization">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="organizationinfo">
-                            <p class="organizationname">Cultural Culinary Fair</p>
-                            <p class="organizationdescription">Dive into the world of flavors with our Cultural Culinary Fair. Hosted by the International Students Association, booths will be set up representing countries from around the globe. Discover traditional dishes, learn about their origins, and maybe even pick up a recipe or two to try at home.</p>
-                        </div>
-                    </li>
-                    <li class="organization">
-                        <img src="images/dice.jpg" alt="">
-                        <div class="organizationinfo">
-                            <p class="organizationname">Heritage Feast</p>
-                            <p class="organizationdescription">Celebrate the rich tapestry of cultures at our school with the Heritage Feast. Organized by the International Students Association, this event showcases traditional dishes from across the globe. Wander from stall to stall, savoring flavors, and learning about the history and significance of each dish. It's not just a feast for your taste buds but also an enriching cultural experience.</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </main>

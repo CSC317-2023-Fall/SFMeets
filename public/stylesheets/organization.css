@@ -1,0 +1,137 @@
+.main {
+    display: flex;
+  }
+  
+  .organization {
+    flex: 3;
+    margin: 1%;
+    border: 3px solid #b700ff;
+    padding: 1%
+  }
+  
+  .staff {
+    flex: 1;
+    margin: 1%;
+    border: 3px solid #b700ff;
+    padding: 1%
+  }
+
+.events {
+    margin: 1%;
+    border: 3px solid #b700ff;
+    padding: 1%
+}
+
+.staffmember {
+    display: flex;
+    align-items: center;
+    background-color: #b700ff;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.staffmember img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.staffinfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.staffname, .staffrole {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+}
+
+.staff ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.staff li.staffmember {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+}
+
+#events ul, .organization ul {
+    list-style: none;
+    background-color: white;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#events li.event, .organization li {
+    color: black;
+    border: 3px solid #b700ff;
+    border-radius: 10px;
+    width: 30%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.eventinfo, .organizationinfo {
+    display: flex;
+    align-items: flex-start;
+}
+
+#events img, .organization img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.eventinfo-text {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.eventheader, .eventheader2 {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+}
+
+.eventheader {
+    justify-content: space-around;
+}
+
+.eventheader2 {
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.eventdescription {
+    margin-top: 10px;
+}
+
+.join {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.createanevent {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}

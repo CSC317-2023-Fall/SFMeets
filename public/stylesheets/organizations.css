@@ -1,44 +1,58 @@
 #organizations ul {
-    display: block;
+    list-style: none;
     background-color: white;
-    width: 40%;
     margin: 0 auto;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 #organizations li.organization {
-    display: flex;
     color: black;
-    float: none;
-    justify-content: center;
-    padding: 1%;
     border: 3px solid #b700ff;
-    padding: 5px;
-    margin: 50px;
     border-radius: 10px;
+    width: 30%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.organizationinfo {
+    display: flex;
+    align-items: flex-start;
 }
 
 #organizations img {
-    height: 256px;
-    width: 256px;
-    border-radius: 50%;
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
 }
 
-.organzationinfo {
-    border: 1px solid blue;
+.organizationinfo-text {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
 }
 
-.organizationname {
-    font-size: 22px;
-    margin: auto;
-    font-weight: bold;
+.organizationheader, .organizationheader2 {
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+}
+
+.organizationheader {
+    justify-content: space-around;
+}
+
+.organizationheader2 {
+    justify-content: space-around;
+    margin-top: 10px;
 }
 
 .organizationdescription {
-    margin: auto;
-    padding: 5%;
-    width: 70%;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .filtersect{
@@ -60,4 +74,10 @@
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.createanorganization {
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
