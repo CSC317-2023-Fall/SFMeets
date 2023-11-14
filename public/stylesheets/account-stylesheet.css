@@ -57,3 +57,31 @@ hr{
         color: gray;
     }
 }
+
+.edit_info{
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+    opacity: 0.9;
+}
+
+.edit_pic{
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
+.save_but{
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0;
+}
+
