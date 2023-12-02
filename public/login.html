@@ -60,6 +60,11 @@
             <script src="scripts/navbar.js"></script>
         </nav>
         <main>
+            <form action="login" method="post">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
             <form id="login_form">
             <div class="container">
                 <h1>Login</h1>
@@ -111,15 +116,8 @@
                 const log_pass = log_form.pass_login.value;
                 
                 if(log_email === "admin" && log_pass === "admin"){
-                    alert("You have log in as an admin!");
-                    setCookie("email", log_email, 14);
-                    setCookie("pass", log_pass, 14);
-                    setCookie("fname", "Mighty", 14);
-                    setCookie("lname", "Teapot", 14);
-                    setCookie("idNum", "123456789", 14);
-                    setCookie("club", "Guildwars 2", 14);
-                    setCookie("loggedIn", true, 14);
-                    location.replace("/account_page.html");
+                    
+                    
                 }else{
                     document.getElementById("errorMsg").style.padding = "3px";
                     document.getElementById("errorMsg").style.border = "thin solid darkred";
