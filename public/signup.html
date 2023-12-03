@@ -60,7 +60,7 @@
             <script src="scripts/navbar.js"></script>
         </nav>
         <main>
-            <form action="/account_page.html">
+            <form action="signup" method="post" id="sign_form">
             <div class="container">
                 <h1>Register</h1>
                 <p>To create an account please fill in this form.</p>
@@ -82,8 +82,8 @@
                 <label for="email"><b>Email</b></label>
                 <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
-                <label for="pass"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass_sign" id="pass_sign" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" id="pass_sign" required>
 
                 <div class="pass_pop" id="pass_pop">
                     <h3>Must contain the following:</h3>
@@ -100,7 +100,7 @@
                     <p id="same" class="invalid">Does not match</p>
                 </div>
 
-                <button type="submit" formmethod="get" class="register_button" id="register_button">Register</button>
+                <button type="submit" class="register_button" id="register_button">Register</button>
                 <hr>
                 <p>Already have an account? <a href="login.html">Login here!</a></p>
 
@@ -125,6 +125,7 @@
             Window Group
         </footer>
         <script>
+
             const userInput = document.getElementById("pass_sign");
             const checkpass = document.getElementById("pass_repeat");
             const lower = document.getElementById("lower");
@@ -238,18 +239,7 @@
                 }
             }
 
-            regi_button.addEventListener("click" , (s) => {
-                s.preventDefault();
-                if(lower.classList.contains("valid") && upper.classList.contains("valid") && same.classList.contains("valid") 
-                && number.classList.contains("valid") && min.classList.contains("valid")){
-                    alert("Sign up successful");
-                    location.replace("/login.html");
-                }else{
-                    document.getElementById("errorMsg_sign").style.padding = "3px";
-                    document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
-                    document.getElementById("errorMsg_sign").innerHTML = "<p>A Section Was Incorrectly Filled Out</p>";
-                }
-            })
+            
 
             
         </script>

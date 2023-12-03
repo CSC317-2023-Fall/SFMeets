@@ -14,6 +14,8 @@ var username = "student";
 var hostname = "localhost";
 var password = "student";
 var database = "sfmeets";
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
          
 var StaticDirectory = path.join(__dirname, 'public');
 
@@ -25,34 +27,62 @@ console.log(message);
 
 
 app.post('/login', function (req, res) {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, ffields, files) {
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, ffields, files) {
+    var con = mysql.createConnection({
+      host: hostname,
+      user: username,
+      password: password,
+      database: database
+    });
 
-      var con = mysql.createConnection({
-        host: hostname,
-        user: username,
-        password: password,
-        database: database
-        });
-
-      con.connect(function(err) {
+    con.connect(function(err) {
+      if (err) throw err;
+      var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "' AND password='" + ffields.password + "'";
+      console.log(qq);
+      con.query(qq, function (err, result, fields) {
         if (err) throw err;
-        var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "' AND password='" + ffields.password + "'";
-        console.log(qq);
-        con.query(qq, function (err, result, fields) {
-          if (err) throw err;
-          //if result is empty, go back to login page
-          if(result.length == 0){
-            res.redirect('/login.html');
-          }
-          else{
-            console.log(result);
-            res.redirect('/');
-          }
-          });
-        });
+        //if result is empty, go back to login page
+        if(result.length == 0){
+          res.redirect('/login.html');
+        }
+        else{
+          console.log(result);
+          res.redirect('/');
+        }
       });
+    });
+  });
 });
+
+app.post('/signup', function(req, res) {
+  var newAcc = new formidable.IncomingForm();
+  newAcc.parse(req, function (err, ffields, files) {
+    var con = mysql.createConnection( {
+      host: hostname,
+      user: username,
+      password: password,
+      database: database
+    });
+    con.connect(function(err) {
+      if(err) throw err;
+      bcrypt.genSalt(saltRounds, function(err, salt){
+        bcrypt.hash(ffields.password, salt, function(err, hash) {
+          console.log(hash);
+          var acc = "INSERT INTO ACCOUNT (USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES ('User','" + ffields.email + "' ,'" + 
+          hash + "' ,'" + ffields.first_name + "','" + ffields.last_name + "')";
+          console.log(acc);
+          con.query(acc, function(err, result, fields) {
+            if(err) throw err;
+            console.log("Account Created");
+            res.redirect('/');
+          })
+        })
+      
+      })
+    })
+  })
+})
       
 app.listen (port, ()=> {
 console.log(`Listening on http://localhost:${port}/`);
