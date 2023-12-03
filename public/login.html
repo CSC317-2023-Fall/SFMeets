@@ -60,12 +60,7 @@
             <script src="scripts/navbar.js"></script>
         </nav>
         <main>
-            <form action="login" method="post">
-                <input type="text" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
-                <button type="submit">Login</button>
-            </form>
-            <form id="login_form">
+            <form id="login_form" action="verifylogin" method="post">
             <div class="container">
                 <h1>Login</h1>
                 <p>Please enter your detail to login.</p>
@@ -74,14 +69,14 @@
                 <div id="errorMsg" class="errorMsg">
 
                 </div>
-            
-                <label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" name="email_login" id="email_login" required>
+                    
+                    <label for="email" name="label1"><b>Email</b></label>
+                    <input type="email" name="email" placeholder="Email" required>
 
-                <label for="pass"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass_login" id="pass_login" required>
+                    <label for="password" name="label2"><b>Password</b></label>
+                    <input type="password" name="password" placeholder="Password" id="pass_login" required>
 
-                <button type="submit" class="login_button" id="login_button">Login</button>
+                    <button type="submit" class="login_button" id="login_button">Login</button>
                 <hr>
                 <p>Don't have an account? <a href="signup.html">Sign up!</a></p>
                 
@@ -105,26 +100,16 @@
         </footer>
 
         <script>
-            const log_form = document.getElementById("login_form");
-            const log_button = document.getElementById("login_button");
-            const fade = document.querySelector('.errorMsg');
+
+            //if cookie named failed login exists, display error message
+            if(getCookies("failedLogin") === "true"){
+                document.getElementById("errorMsg").style.padding = "3px";
+                document.getElementById("errorMsg").style.border = "thin solid darkred";
+                document.getElementById("errorMsg").innerHTML = "<p>Invalid Login Credentials</p>";
+                setCookie("failedLogin", "false", 1);
+            }
+
             
-
-            log_button.addEventListener("click", (l) => {
-                l.preventDefault();
-                const log_email = log_form.email_login.value;
-                const log_pass = log_form.pass_login.value;
-                
-                if(log_email === "admin" && log_pass === "admin"){
-                    
-                    
-                }else{
-                    document.getElementById("errorMsg").style.padding = "3px";
-                    document.getElementById("errorMsg").style.border = "thin solid darkred";
-                    document.getElementById("errorMsg").innerHTML = "<p>Invalid Login Credentials</p>";
-                }
-            })
-
             function setCookie(cname, cvalue, exdays){
                 const exp = new Date();
                 exp.setTime(exp.getTime() + (exdays*24*69*60*1000));
