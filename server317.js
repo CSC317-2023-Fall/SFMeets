@@ -67,6 +67,7 @@ app.post('/verifylogin', function (req, res) {
                 var resstr = '<script>setCookie("loggedIn", "true", 14);';
                 resstr = resstr + 'setCookie("fname", "' + account[0].FIRSTNAME + '", 14);';
                 resstr = resstr + 'setCookie("lname", "' + account[0].LASTNAME + '", 14);';
+                resstr = resstr + 'setCookie("idNum", "' + account[0].ID + '", 14);';
                 resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
                 resstr = resstr + 'const exp = new Date();';
                 resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
