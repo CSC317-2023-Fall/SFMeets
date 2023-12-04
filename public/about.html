@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" href="stylesheets/about-stylesheet.css">
     <link rel="icon" href="images/GatorLogo_blk.png" type="image">
-    <script scr="scripts/navbar.js"></script>
 </head>
 
 <body onload="onloadEvent()">
@@ -60,7 +59,6 @@
                     <a href="" id="logoutbutton" onclick="logout()">Logout</a>
                 </div>
         </ul>
-        <script src="scripts/navbar.js"></script>
     </nav>
     <main>
 
@@ -151,6 +149,23 @@
         SFSU Meets<br>
         Window Group
     </footer>
+    <script src="scripts/navbar.js">
+        function getCookies(cname){
+    let name = cname + "=";
+    let contentCookie = decodeURIComponent(document.cookie);
+    let ca = contentCookie.split(';');
+    for(let i = 0; i < ca.length; i++){
+        let c = ca[i];
+        while (c.charAt(0) == ' '){
+            c = c.substring(1);    
+        }
+        if(c.indexOf(name) == 0){
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+    </script>
 </body>
 
 </html>

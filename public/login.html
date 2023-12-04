@@ -109,12 +109,11 @@
                 setCookie("failedLogin", "false", 1);
             }
 
-            
             function setCookie(cname, cvalue, exdays){
                 const exp = new Date();
                 exp.setTime(exp.getTime() + (exdays*24*69*60*1000));
                 let expires = "expires=" + exp.toUTCString();
-                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=None;Secure";
             }
 
             function getCookies(cname){

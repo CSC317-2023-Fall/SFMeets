@@ -27,14 +27,17 @@ function getCookies(cname){
     return "";
 }
 
-const welcommessage = document.getElementById("welcome");
+//const welcommessage = document.getElementById("welcome");
 const loginbuttons = document.getElementById("loginbuttons");
 const accountinfo = document.getElementById("accountinfo");
 
 function onloadEvent(){
     let logged = getCookies("loggedIn");
-    if(logged === "true"){
-        welcommessage.remove();
+    if(logged !== "true"){
+        accountinfo.remove();
+    }
+    else{
+        //welcommessage.remove();
         loginbuttons.remove();
         let fname = getCookies("fname");
         let lname = getCookies("lname");
@@ -43,10 +46,8 @@ function onloadEvent(){
         document.getElementById("name").innerHTML = name;
         sticky = navbar.offsetTop;
     }
-    else{
-        accountinfo.remove();
-    }
 }
+
 
 function logout(){
     document.cookie = "fname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

@@ -64,7 +64,18 @@ app.post('/verifylogin', function (req, res) {
               }
               else{
                 console.log(account);
-                res.redirect('/');
+                var resstr = '<script>setCookie("loggedIn", "true", 14);';
+                resstr = resstr + 'setCookie("fname", "' + account[0].FIRSTNAME + '", 14);';
+                resstr = resstr + 'setCookie("lname", "' + account[0].LASTNAME + '", 14);';
+                resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+                resstr = resstr + 'const exp = new Date();';
+                resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+                resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+                resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=None;Secure";';
+                resstr = resstr + '}';
+
+                resstr = resstr + 'location.replace("/"); </script>';
+                res.send(resstr);
               }
             }
             else{
