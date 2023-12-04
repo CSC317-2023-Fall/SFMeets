@@ -26,33 +26,64 @@ app.use(express.static(StaticDirectory));
 console.log(message);
 
 
-app.post('/login', function (req, res) {
+app.post('/verifylogin', function (req, res) {
   var form = new formidable.IncomingForm();
+  console.log('ffields');
   form.parse(req, function (err, ffields, files) {
+    
     var con = mysql.createConnection({
       host: hostname,
       user: username,
       password: password,
       database: database
-    });
+      });
 
     con.connect(function(err) {
       if (err) throw err;
-      var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "' AND password='" + ffields.password + "'";
+      var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "'";
       console.log(qq);
       con.query(qq, function (err, result, fields) {
         if (err) throw err;
-        //if result is empty, go back to login page
-        if(result.length == 0){
-          res.redirect('/login.html');
-        }
-        else{
-          console.log(result);
-          res.redirect('/');
-        }
+        const account = result;
+          compareit(ffields.password.toString(), result[0].PASSWORD.toString()).then(function(result) {
+            if(result){
+              //if result is empty, go back to login page
+              if(result.length == 0){
+                
+                var resstr = '<script>setCookie("failedLogin", "true", 1);';
+
+                resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+                resstr = resstr + 'const exp = new Date();';
+                resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+                resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+                resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+                resstr = resstr + '}';
+
+                resstr = resstr + 'location.replace("/login.html"); </script>';
+                return res.send(resstr);
+              }
+              else{
+                console.log(account);
+                res.redirect('/');
+              }
+            }
+            else{
+              var resstr = '<script>setCookie("failedLogin", "true", 1);';
+
+                resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+                resstr = resstr + 'const exp = new Date();';
+                resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+                resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+                resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+                resstr = resstr + '}';
+
+                resstr = resstr + 'location.replace("/login.html"); </script>';
+                return res.send(resstr);
+            }
+        });
       });
     });
-  });
+    });
 });
 
 app.post('/signup', function(req, res) {
@@ -85,6 +116,11 @@ app.post('/signup', function(req, res) {
     })
   })
 })
+
+async function compareit(password, hash) {
+  const match = await bcrypt.compare(password, hash);
+  return match;
+}
       
 app.listen (port, ()=> {
 console.log(`Listening on http://localhost:${port}/`);
