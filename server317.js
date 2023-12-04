@@ -57,6 +57,7 @@ app.post('/login', function (req, res) {
 
 app.post('/signup', function(req, res) {
   var newAcc = new formidable.IncomingForm();
+  console.log('ffields');
   newAcc.parse(req, function (err, ffields, files) {
     var con = mysql.createConnection( {
       host: hostname,
@@ -64,13 +65,15 @@ app.post('/signup', function(req, res) {
       password: password,
       database: database
     });
+    
     con.connect(function(err) {
       if(err) throw err;
       bcrypt.genSalt(saltRounds, function(err, salt){
-        bcrypt.hash(ffields.password, salt, function(err, hash) {
+        console.log(ffields.password.toString());
+        bcrypt.hash(ffields.password.toString(), salt, function(err, hash) {
           console.log(hash);
-          var acc = "INSERT INTO ACCOUNT (USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES ('User','" + ffields.email + "' ,'" + 
-          hash + "' ,'" + ffields.first_name + "','" + ffields.last_name + "')";
+          var acc = "INSERT INTO ACCOUNT (USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES ('User','" + hash + "' ,'" + 
+          ffields.email + "' ,'" + ffields.first_name + "','" + ffields.last_name + "')";
           console.log(acc);
           con.query(acc, function(err, result, fields) {
             if(err) throw err;
@@ -78,7 +81,6 @@ app.post('/signup', function(req, res) {
             res.redirect('/');
           })
         })
-      
       })
     })
   })
