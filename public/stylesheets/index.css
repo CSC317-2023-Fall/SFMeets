@@ -113,8 +113,15 @@ hr{
 
 .eventimg{
     background-color: #333;
+    width: 512px;
+    height: 288px;
     grid-area: eventimg;
+
     img{
+        max-width: 512px;
+        max-height: 288px;
+        min-width: 512px;
+        min-height: 288px;
         height: 100%;
         width: 100%;
     }
@@ -122,6 +129,8 @@ hr{
 
 .eventdesc{
     grid-area: main;
+    align-items: left;
+    text-align: left;
     padding: 10px;
 }
 
@@ -132,6 +141,8 @@ hr{
     gap: 10px;
     background-color: white;
     padding: 10px;
+    min-width: 0;
+    min-height: 0;
     p{
         max-lines: 3;
     }

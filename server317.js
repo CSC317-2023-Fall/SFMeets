@@ -25,6 +25,39 @@ app.use(express.static(StaticDirectory));
 
 console.log(message);
 
+app.get('/getEvents', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = "SELECT * FROM EVENTS";
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/getOrgs', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = "SELECT * FROM ORGS";
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
 
 app.post('/verifylogin', function (req, res) {
   var form = new formidable.IncomingForm();
@@ -36,7 +69,7 @@ app.post('/verifylogin', function (req, res) {
       user: username,
       password: password,
       database: database
-      });
+    });
 
     con.connect(function(err) {
       if (err) throw err;
