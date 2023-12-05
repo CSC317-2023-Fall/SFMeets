@@ -71,16 +71,16 @@ VALUES
 
 INSERT INTO EVENTS (NAME, LOCATION, DATE, TIME, DESCRIPTION, MAXUSERS)
 VALUES
-('Watch A Comedy Show', 'Punch Line SF, SF', '4/8/24', 'testtime', 'We will watch a comedy show! Come Join Us!'),
-('Watch A Movie', 'AMC Metreon 16, SF', '4/7/24', 'testtime', 'We will watch a movie! Come Join Us!'),
-('Watch A Play', 'Orpheum Theatre, SF', '4/6/24', 'testtime', 'We will watch a play! Come Join Us!'),
-('Watch A Concert', 'Chase Center, SF', '4/5/24', 'testtime', 'We will watch a concert! Come Join Us!'),
-('Watch A Soccer Game', 'Avaya Stadium, San Jose', '4/4/24', 'testtime', 'We will watch the Earthquakes play! Come Join Us!'),
-('Watch A Hockey Game', 'SAP Center, San Jose', '4/3/24', 'testtime', 'We will watch the Sharks play! Come Join Us!'),
-('Watch A Football Game', 'Levi Stadium, Santa Clara', '4/2/24', 'testtime', 'We will watch the 49ers play! Come Join Us!'),
-('Watch A Basketball Game', 'Chase Center, SF', '4/1/24', 'testtime', 'We will watch the Warriors play! Come Join Us!'),
-('Watch A Baseball Game', 'Oracle Park, SF', '3/31/24', 'testtime', 'We will watch the Giants play! Come Join Us!'),
-('Sightseeing Tour', 'Downtown SF', '1/13/24', 'testtime', 'We Will Go Around SF');
+('Watch A Comedy Show', 'Punch Line SF, SF', '4/8/24', 'testtime', 'We will watch a comedy show! Come Join Us!', 20),
+('Watch A Movie', 'AMC Metreon 16, SF', '4/7/24', 'testtime', 'We will watch a movie! Come Join Us!', 20),
+('Watch A Play', 'Orpheum Theatre, SF', '4/6/24', 'testtime', 'We will watch a play! Come Join Us!', 20),
+('Watch A Concert', 'Chase Center, SF', '4/5/24', 'testtime', 'We will watch a concert! Come Join Us!', 20),
+('Watch A Soccer Game', 'Avaya Stadium, San Jose', '4/4/24', 'testtime', 'We will watch the Earthquakes play! Come Join Us!', 20),
+('Watch A Hockey Game', 'SAP Center, San Jose', '4/3/24', 'testtime', 'We will watch the Sharks play! Come Join Us!', 20),
+('Watch A Football Game', 'Levi Stadium, Santa Clara', '4/2/24', 'testtime', 'We will watch the 49ers play! Come Join Us!', 20),
+('Watch A Basketball Game', 'Chase Center, SF', '4/1/24', 'testtime', 'We will watch the Warriors play! Come Join Us!', 20),
+('Watch A Baseball Game', 'Oracle Park, SF', '3/31/24', 'testtime', 'We will watch the Giants play! Come Join Us!', 20),
+('Sightseeing Tour', 'Downtown SF', '1/13/24', 'testtime', 'We Will Go Around SF', 20);
 ;
 
 INSERT INTO ORGS (NAME, DESCRIPTION)
