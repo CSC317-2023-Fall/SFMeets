@@ -60,6 +60,192 @@ app.get('/getOrgs', function (req, res) {
 });
 
 app.get('/getOrgEvents', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `SELECT * FROM ORGEVENTS WHERE ORGID = ${req.query.orgid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/getUserEvents', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `SELECT * FROM USEREVENTS WHERE USERID = ${req.query.userid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/getUserOrgEvents', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `SELECT * FROM USERORGEVENTS WHERE USERID = ${req.query.userid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/getOrgEventUsers', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `SELECT * FROM USERORGEVENTS WHERE EVENTID = ${req.query.eventid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/getEventUsers', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `SELECT * FROM USEREVENTS WHERE EVENTID = ${req.query.eventid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/joinUserOrgEvent', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `INSERT INTO USERORGEVENTS (USERID, EVENTID) VALUES (${req.query.userid}, ${req.query.eventid});`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/leaveUserOrgEvent', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `DELETE FROM USERORGEVENTS WHERE USERID = ${req.query.userid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/joinEvent', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `INSERT INTO USEREVENTS (USERID, EVENTID) VALUES (${req.query.userid}, ${req.query.eventid});`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/leaveEvent', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `DELETE FROM USEREVENTS WHERE USERID = ${req.query.userid};`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/createOrganization', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `INSERT INTO ORGS (NAME, DESCRIPTION) VALUES ('${req.query.name}', '${req.query.description}')`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
+app.get('/editOrganization', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `UPDATE ORGS SET NAME = '${req.query.name}', DESCRIPTION = '${req.query.description}' WHERE NAME = '${req.query.previousName}';`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
 app.get('/getInfo', function (req, res){
   var con = mysql.createConnection({
     host: hostname,
@@ -220,6 +406,7 @@ app.post('/updateInfo', function(req, res) {
       password: password,
       database: database
     });
+    
     con.connect(function(err) {
       if(err) throw err;
       var acc = "UPDATE ACCOUNT SET FIRSTNAME = '" + ffields.new_first +
