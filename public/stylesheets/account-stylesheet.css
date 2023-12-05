@@ -94,3 +94,21 @@ hr{
     opacity: 0;
 }
 
+.grid-container > .item3{
+    img{
+        width: 20%;
+        height: 20%;
+    }
+    button{
+        font-size: 100%;
+        color: #b700ff;
+        background-color: #fff;
+        border: 1px solid #b700ff;
+        padding: 5px 20px;
+    }
+    button:hover{
+        color: #fff;
+        background-color: #b700ff;
+        box-shadow: 0 0 20px #b700ff;
+    }
+}

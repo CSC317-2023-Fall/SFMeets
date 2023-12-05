@@ -122,3 +122,28 @@ function save_info(){
     }
 
 }
+
+var orgs = [];
+const resq2 = new XMLHttpRequest();
+resq2.open('GET', 'http://localhost:3000/getOrgs');
+resq2.send();
+resq2.onload = () => {
+    orgs = JSON.parse(resq2.response);
+
+    var fOrgs = document.getElementsByClassName("item3")[0];
+
+    var title1 = fOrgs.getElementsByClassName("title")[0];
+    var title2 = fOrgs.getElementsByClassName("title")[1];
+
+    
+    var desc1 = fOrgs.getElementsByClassName("desc")[0];
+    var desc2 = fOrgs.getElementsByClassName("desc")[1];
+
+
+    title1.innerHTML = orgs[0].NAME.toString();
+    desc1.innerHTML = orgs[0].DESCRIPTION.toString();
+
+    title2.innerHTML = orgs[1].NAME.toString();
+    desc2.innerHTML = orgs[1].DESCRIPTION.toString();
+
+}

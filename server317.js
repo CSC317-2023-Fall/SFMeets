@@ -160,7 +160,8 @@ app.post('/signup', function(req, res) {
       database: database
     });
 
-    if(ffields.password != ffields.pass_repeat){
+    console.log(ffields.pass_repeat);
+    if(ffields.password.toString() != ffields.pass_repeat.toString()){
       var resstr = '<script>setCookie("failedSignup", "true", 1);';
 
       resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
@@ -218,7 +219,6 @@ app.post('/updateInfo', function(req, res) {
       password: password,
       database: database
     });
-    
     con.connect(function(err) {
       if(err) throw err;
       var acc = "UPDATE ACCOUNT SET FIRSTNAME = '" + ffields.new_first +
@@ -226,7 +226,7 @@ app.post('/updateInfo', function(req, res) {
       console.log(acc);
       con.query(acc, function(err, result, fields) {
         if(err) throw err;
-        console.log("Account Created");
+        console.log("Account Updated");
         var resstr = '<script>location.reload();</script>'
         res.send;
       });
