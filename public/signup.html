@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="stylesheets/stylesheet.css">
         <link rel="stylesheet" href="stylesheets/regi-stylesheet.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
+        <script src="scripts/signup.js"></script>
     </head>
     <body>
         <header>
@@ -83,7 +84,8 @@
                 <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
                 <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" id="pass_sign" required>
+                <input type="password" placeholder="Enter Password" name="password" id="pass_sign" onfocus="pass_check()" 
+                onblur="notSelected_pass()" onkeyup="checking()">
 
                 <div class="pass_pop" id="pass_pop">
                     <h3>Must contain the following:</h3>
@@ -94,7 +96,8 @@
                 </div>
 
                 <label for="pass_repeat"><b>Confirm Password</b></label>
-                <input type="password" placeholder="Re-enter Password" name="pass_repeat" id="pass_repeat" required>
+                <input type="password" placeholder="Re-enter Password" name="pass_repeat" id="pass_repeat" onfocus="repeat_check()" 
+                onblur="repeatOff()" onkeyup="repeat_checking()" onclick="initial_check()" required>
 
                 <div class="pass_check" id="pass_check">
                     <p id="same" class="invalid">Does not match</p>
@@ -124,124 +127,5 @@
             SFSU Meets<br>
             Window Group
         </footer>
-        <script>
-
-            const userInput = document.getElementById("pass_sign");
-            const checkpass = document.getElementById("pass_repeat");
-            const lower = document.getElementById("lower");
-            const upper = document.getElementById("upper");
-            const number = document.getElementById("number");
-            const min = document.getElementById("min");
-            const regi_button = document.getElementById("register_button");
-            const same = document.getElementById("same");
-
-            userInput.onfocus = function(){
-                document.getElementById("pass_pop").style.display = "block";
-            }
-
-            userInput.onblur = function(){
-                document.getElementById("pass_pop").style.display = "none"
-            }
-
-            userInput.onkeyup = function(){
-                const lowerCheck = /[a-z]/g;
-                if(userInput.value.match(lowerCheck)){
-                    lower.classList.remove("invalid");
-                    lower.classList.add("valid");
-                }else{
-                    lower.classList.remove("valid");
-                    lower.classList.add("invalid");
-                }
-
-                const upperCheck = /[A-Z]/g;
-                if(userInput.value.match(upperCheck)){
-                    upper.classList.remove("invalid");
-                    upper.classList.add("valid");
-                }else{
-                    upper.classList.remove("valid");
-                    upper.classList.add("invalid");
-                }
-
-                const numberCheck = /[0-9]/g;
-                if(userInput.value.match(numberCheck)){
-                    number.classList.remove("invalid");
-                    number.classList.add("valid");
-                }else{
-                    number.classList.remove("valid");
-                    number.classList.add("invalid");
-                }
-
-                if(userInput.value.length >= 8){
-                    min.classList.remove("invalid");
-                    min.classList.add("valid");
-                }else{
-                    min.classList.remove("valid");
-                    min.classList.add("invalid");
-                }
-            }
-
-            checkpass.onfocus = function(){
-                document.getElementById("pass_check").style.display = "block";
-            }
-
-            checkpass.onblur = function(){
-                document.getElementById("pass_check").style.display = "none";
-            }
-
-            checkpass.onkeyup = function(){
-                if(checkpass.value == (userInput.value)){
-                    same.classList.remove("invalid");
-                    same.classList.add("valid");
-                }else{
-                    same.classList.remove("valid");
-                    same.classList.add("invalid");
-                }
-            }
-
-            checkpass.onclick = function(){
-                if(checkpass.value == (userInput.value)){
-                    same.classList.remove("invalid");
-                    same.classList.add("valid");
-                }else{
-                    same.classList.remove("valid");
-                    same.classList.add("invalid");
-                }
-            }
-
-            function setCookie(cname, cvalue, exdays){
-                const exp = new Date();
-                exp.setTime(exp.getTime() + (exdays*24*69*60*1000));
-                let expires = "expires=" + exp.toUTCString();
-                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-            }
-
-            function getCookies(cname){
-                let name = cname + "=";
-                let contentCookie = decodeURIComponent(document.cookie);
-                let ca = contentCookie.split(';');
-                for(let i = 0; i < ca.length; i++){
-                    let c = ca[i];
-                    while (c.charAt(0) == ' '){
-                        c = c.substring(1);    
-                    }
-                    if(c.indexOf(name) == 0){
-                    return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-            }
-
-            function checkLogin(){
-                let logged = getCookies("loggedIn");
-                if(logged === "true"){
-                    alert("You have already logged in");
-                    location.replace("/account_page.html");
-                }
-            }
-
-            
-
-            
-        </script>
     </body>
 </html>
