@@ -79,7 +79,7 @@ function initial_check(){
     var userInput = document.getElementById("pass_sign");
     var checkpass = document.getElementById("pass_repeat");
     var same = document.getElementById("same");
-    
+
     if(checkpass.value == (userInput.value)){
         same.classList.remove("invalid");
         same.classList.add("valid");
@@ -120,5 +120,20 @@ function checkLogin(){
     }
 }
 
+function form_check(){
+    var lower = document.getElementById("lower");
+    var upper = document.getElementById("upper");
+    var number = document.getElementById("number");
+    var min = document.getElementById("min");
+    var same = document.getElementById("same");
 
+    if(lower.classList.contains("valid") && upper.classList.contains("valid") && same.classList.contains("valid") 
+    && number.classList.contains("valid") && min.classList.contains("valid")){
+        alert("Sign up successful");                   
+    }else{
+        document.getElementById("errorMsg_sign").style.padding = "3px";
+        document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
+        document.getElementById("errorMsg_sign").innerHTML = "<p>Password does not match</p>";
+    }
+}
 

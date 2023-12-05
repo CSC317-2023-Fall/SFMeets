@@ -59,6 +59,24 @@ app.get('/getOrgs', function (req, res) {
   });
 });
 
+app.get('/getInfo', function (req, res){
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err){
+    if(err) throw err;
+    var info = "SELECT * FROM ACCOUNT";
+    con.query(info, function (err, result, fields){
+      console.log(result);
+      if(err) throw err;
+      res.send(result);
+    });
+  });
+});
+
 app.post('/verifylogin', function (req, res) {
   var form = new formidable.IncomingForm();
   console.log('ffields');
@@ -148,19 +166,44 @@ app.post('/signup', function(req, res) {
         console.log(ffields.password.toString());
         bcrypt.hash(ffields.password.toString(), salt, function(err, hash) {
           console.log(hash);
-          var acc = "INSERT INTO ACCOUNT (USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES ('User','" + hash + "' ,'" + 
+          var acc = "INSERT INTO ACCOUNT (USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES ('" + ffields.sfsu_id + "','" + hash + "' ,'" + 
           ffields.email + "' ,'" + ffields.first_name + "','" + ffields.last_name + "')";
           console.log(acc);
           con.query(acc, function(err, result, fields) {
             if(err) throw err;
             console.log("Account Created");
             res.redirect('/');
-          })
-        })
-      })
-    })
-  })
-})
+          });
+        });
+      });
+    });
+  });
+});
+
+app.post('/updateInfo', function(req, res) {
+  var update = new formidable.IncomingForm();
+  console.log('ffields');
+  update.parse(req, function (err, ffields, files) {
+    var con = mysql.createConnection( {
+      host: hostname,
+      user: username,
+      password: password,
+      database: database
+    });
+    
+    con.connect(function(err) {
+      if(err) throw err;
+      var acc = "UPDATE ACCOUNT SET FIRSTNAME = '" + ffields.new_first +
+       "', LASTNAME = '" + ffields.new_last + "' WHERE EMAIL ='" + ffields.accEmail + "'";
+      console.log(acc);
+      con.query(acc, function(err, result, fields) {
+        if(err) throw err;
+        console.log("Account Created");
+        res.redirect('/');
+      });
+    });
+  });
+});
 
 async function compareit(password, hash) {
   const match = await bcrypt.compare(password, hash);

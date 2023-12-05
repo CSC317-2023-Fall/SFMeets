@@ -10,7 +10,7 @@
         <script src="scripts/account_page.js"></script>
 
     </head>
-    <body onload="getInfo(), onloadEvent()">
+    <body onload="onloadEvent()">
         <header>
             <br>
         </header>
@@ -71,6 +71,7 @@
             </div>
             <div class="item2" id="personal_info"><h3>Personal Infomation  <button class="edit_info" type="submit" id="edit_info" onclick="show_save()">Edit</button></h3>
                 <br>
+                
                 <img src="images/headerBackground.jpg" alt="avatar icon" width="20%" height="auto">
                 <br>
                 <button class="edit_pic" type="button" id="edit_pic">Change Picture</button>
@@ -78,29 +79,37 @@
                 <label for="bio"><b>Description</b></label>
                 <input type="text" placeholder="Enter a quick description about yourself" name="bio" id="bio">
                 <hr>
-                <div id="fname">
+                <form action="updateInfo" method="post" id="update_form">
+                    <div id="fname">
                     <p><b>First Name:</b></p>
-                </div>
-                <hr>
-                <div id="lname">
-                    <p><b>Last Name:</b></p>
-                </div>
-                <hr>
-                <div id="idNum">
-                    <p><b>SFSU ID:</b></p>
-                </div>
-                <hr>
-                <div id="email">
-                    <p><b>Email:</b></p>
-                </div>
-                <hr>
-                <div id="pass">  
-                    <p><b>Password:</b></p>
-                </div> 
-                <hr>
-                <div id="save">
-                    <button type="submit" class="save_but" id="save_but" onclick="save_info()">Save</button>
-                </div>  
+                    </div>
+                    <hr>
+                    <div id="lname">
+                        <p><b>Last Name:</b></p>
+                    </div>
+                    <hr>
+                    <div id="idNum">
+                        <p><b>SFSU ID:</b></p>
+                    </div>
+                    <hr>
+                    <div id="email">
+                        <p><b>Email:</b></p>
+                    </div>
+                    <hr>
+                    <div id="pass">  
+                        <p><b>Password:</b></p>
+                    </div> 
+                    
+                    <hr>
+                    <div id="accountID">
+                        <label for=""accPass id="confirm_label"></label>
+                        <input type='hidden' name='accEmail' id='accEmail' class="update">
+                    </div>
+                    <div id="save">
+                        <button type="submit" class="save_but" id="save_but"  onclick="save_info()">Save</button>
+                    </div>
+                </form>
+                  
             </div>
             <div class="item3" id="affiliated_info"><h3>Affiliated</h3>
                 <br>
