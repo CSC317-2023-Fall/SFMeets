@@ -59,6 +59,7 @@ app.get('/getOrgs', function (req, res) {
   });
 });
 
+app.get('/getOrgEvents', function (req, res) {
 app.get('/getInfo', function (req, res){
   var con = mysql.createConnection({
     host: hostname,

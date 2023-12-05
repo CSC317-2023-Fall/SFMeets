@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="stylesheets/events.css">
         <link rel="icon" href="images/GatorLogo_blk.png" type="image">
         <script src="scripts/events.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body onload="onloadEvent()">
         <header>
@@ -40,10 +41,8 @@
                     </div>
                 </li>
                 <li>
-                    <form>
-                        <input type="text" name="search" placeholder="Search">
-                        <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
-                    </form>
+                    <input type="text" name="search" placeholder="Search">
+                    <button class="search" type="submit" name="submit-search"><img src="images/magnifyingglass.png" width="10"></button>
                 </li>
                 <li id="loginbuttons">
                     <form>
