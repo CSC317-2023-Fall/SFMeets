@@ -86,23 +86,39 @@ const save_but = document.getElementById("save_but")
 
 
 function show_save(){
-    document.getElementById("save_but").style.opacity = "0.9";
-    document.getElementById("accEmail").type = "email";
-    document.getElementById("confirm_label").innerHTML = "Confirm Email";
-    document.getElementById("change_f").innerHTML += "<br><label for='new_first'>Change to:</label><input type='text' id='new_first' class='update' name='new_first'>";
-    document.getElementById("change_l").innerHTML += "<br><label for='new_last'>Change to:</label><input type='text' id='new_last' class='update' name='new_last'>";
+    const ele = document.getElementById("edit_info");
+    if(ele.getAttribute('on') == 'true')
+    {
+        document.getElementById("edit_info").setAttribute('on', 'false')
+        document.getElementById("save_but").style.opacity = "0";
+        document.getElementById("accEmail").type = "hidden";
+        document.getElementById("temp1").remove();
+        document.getElementById("temp2").remove();
+        document.getElementById("confirm_label").innerHTML = "";    
+    }else{
+        document.getElementById("edit_info").setAttribute('on', 'true')
+        document.getElementById("save_but").style.opacity = "0.9";
+        document.getElementById("accEmail").type = "email";
+        document.getElementById("confirm_label").innerHTML = "Confirm Email";
+        document.getElementById("change_f").innerHTML += "<div id='temp1'><label for='new_first'>Change to:</label><input type='text' id='new_first' class='update' name='new_first'></div>";
+        document.getElementById("change_l").innerHTML += "<div id='temp2'><label for='new_last'id='temp2'>Change to:</label><input type='text' id='new_last' class='update' name='new_last'></div>";
+    }
 }
+    
 
 function save_info(){
     const ele = document.getElementById("save_but");
     const css = window.getComputedStyle(ele, null);
     let opac = css.getPropertyValue("opacity");
-    if(opac === "0.9"){        
-        document.cookie = "fname=" + fname + "; path=/"; 
-        document.cookie = "lname=" + lname + "; path=/"; 
-        location.reload();
+    const email_o = document.getElementById("change_e");
+    const email_check = document.getElementById("accEmail");
+    if(opac === "0.9" && (email_o.innerText == email_check.value)){            
+        fname = document.getElementById("new_first");
+        lname = document.getElementById("new_last");
+        document.cookie = "fname=" + fname.value + "; path=/"; 
+        document.cookie = "lname=" + lname.value + "; path=/"; 
     }else{
-        return ' ';
+        location.reload();
     }
 
 }

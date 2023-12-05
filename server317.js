@@ -199,7 +199,8 @@ app.post('/updateInfo', function(req, res) {
       con.query(acc, function(err, result, fields) {
         if(err) throw err;
         console.log("Account Created");
-        res.redirect('/');
+        var resstr = '<script>location.reload();</script>'
+        res.send;
       });
     });
   });
