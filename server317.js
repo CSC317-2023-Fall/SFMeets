@@ -227,8 +227,7 @@ app.post('/updateInfo', function(req, res) {
       con.query(acc, function(err, result, fields) {
         if(err) throw err;
         console.log("Account Updated");
-        var resstr = '<script>location.reload();</script>'
-        res.send;
+        res.redirect("/account_page.html");
       });
     });
   });
