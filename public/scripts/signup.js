@@ -114,9 +114,16 @@ function getCookies(cname){
 
 function checkLogin(){
     let logged = getCookies("loggedIn");
+    let failed = getCookies("failedSignup");
     if(logged === "true"){
         alert("You have already logged in");
         location.replace("/account_page.html");
+    }
+    if(failed === "true"){
+        document.getElementById("errorMsg_sign").style.padding = "3px";
+        document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
+        document.getElementById("errorMsg_sign").innerHTML = "<p>Password does not match</p>";
+        setCookie("failedSignup", "false", 1);
     }
 }
 
@@ -131,9 +138,7 @@ function form_check(){
     && number.classList.contains("valid") && min.classList.contains("valid")){
         alert("Sign up successful");                   
     }else{
-        document.getElementById("errorMsg_sign").style.padding = "3px";
-        document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
-        document.getElementById("errorMsg_sign").innerHTML = "<p>Password does not match</p>";
+        return ' ';
     }
 }
 

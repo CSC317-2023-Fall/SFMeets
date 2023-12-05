@@ -93,27 +93,27 @@ app.post('/verifylogin', function (req, res) {
       if (err) throw err;
       var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "'";
       console.log(qq);
+      console.log(err);
       con.query(qq, function (err, result, fields) {
         if (err) throw err;
         const account = result;
-          compareit(ffields.password.toString(), result[0].PASSWORD.toString()).then(function(result) {
-            if(result){
-              //if result is empty, go back to login page
-              if(result.length == 0){
+        //if result is empty, go back to login page
+        if(result.length == 0){
                 
-                var resstr = '<script>setCookie("failedLogin", "true", 1);';
+          var resstr = '<script>setCookie("failedLogin", "true", 1);';
 
-                resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
-                resstr = resstr + 'const exp = new Date();';
-                resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
-                resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
-                resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
-                resstr = resstr + '}';
+          resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+          resstr = resstr + 'const exp = new Date();';
+          resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+          resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+          resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+          resstr = resstr + '}';
 
-                resstr = resstr + 'location.replace("/login.html"); </script>';
-                return res.send(resstr);
-              }
-              else{
+          resstr = resstr + 'location.replace("/login.html"); </script>';
+          return res.send(resstr);
+        }
+          compareit(ffields.password.toString(), result[0].PASSWORD.toString()).then(function(result) {
+            if(result){        
                 console.log(account);
                 var resstr = '<script>setCookie("loggedIn", "true", 14);';
                 resstr = resstr + 'setCookie("fname", "' + account[0].FIRSTNAME + '", 14);';
@@ -128,7 +128,7 @@ app.post('/verifylogin', function (req, res) {
 
                 resstr = resstr + 'location.replace("/"); </script>';
                 res.send(resstr);
-              }
+              
             }
             else{
               var resstr = '<script>setCookie("failedLogin", "true", 1);';
@@ -159,7 +159,20 @@ app.post('/signup', function(req, res) {
       password: password,
       database: database
     });
-    
+
+    if(ffields.password != ffields.pass_repeat){
+      var resstr = '<script>setCookie("failedSignup", "true", 1);';
+
+      resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+      resstr = resstr + 'const exp = new Date();';
+      resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+      resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+      resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+      resstr = resstr + '}';
+      resstr = resstr + 'location.replace("/signup.html"); </script>';
+      return res.send(resstr);
+    }
+
     con.connect(function(err) {
       if(err) throw err;
       bcrypt.genSalt(saltRounds, function(err, salt){
@@ -171,8 +184,23 @@ app.post('/signup', function(req, res) {
           console.log(acc);
           con.query(acc, function(err, result, fields) {
             if(err) throw err;
-            console.log("Account Created");
-            res.redirect('/');
+            if(result.length == 0){
+              var resstr = '<script>setCookie("failedSignup", "true", 1);';
+
+              resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+              resstr = resstr + 'const exp = new Date();';
+              resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+              resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+              resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+              resstr = resstr + '}';
+
+              resstr = resstr + 'location.replace("/signup.html"); </script>';
+              return res.send(resstr);
+            }else{
+              console.log("Account Created");
+              res.redirect('/login.html');
+            }
+            
           });
         });
       });

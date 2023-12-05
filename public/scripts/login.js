@@ -1,11 +1,6 @@
 
 //if cookie named failed login exists, display error message
-if(getCookies("failedLogin") === "true"){
-    document.getElementById("errorMsg").style.padding = "3px";
-    document.getElementById("errorMsg").style.border = "thin solid darkred";
-    document.getElementById("errorMsg").innerHTML = "<p>Invalid Login Credentials</p>";
-    setCookie("failedLogin", "false", 1);
-}
+
 
 function setCookie(cname, cvalue, exdays){
     const exp = new Date();
@@ -32,9 +27,16 @@ function getCookies(cname){
 
 function checkLogin(){
     let logged = getCookies("loggedIn");
+    let failed = getCookies("failedLogin");
     if(logged === "true"){
         alert("You have already logged in");
         location.replace("/account_page.html");
+    }
+    if(failed === "true"){
+        document.getElementById("errorMsg").style.padding = "3px";
+        document.getElementById("errorMsg").style.border = "thin solid darkred";
+        document.getElementById("errorMsg").innerHTML = "<p>Invalid Login Credentials</p>";
+        setCookie("failedLogin", "false", 1);
     }
 }
 
