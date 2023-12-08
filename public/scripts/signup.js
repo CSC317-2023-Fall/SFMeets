@@ -137,10 +137,6 @@ function form_check(){
     if(lower.classList.contains("valid") && upper.classList.contains("valid") && same.classList.contains("valid") 
     && number.classList.contains("valid") && min.classList.contains("valid")){
         alert("Sign up successful");                   
-    }else{
-        document.getElementById("errorMsg_sign").style.padding = "3px";
-        document.getElementById("errorMsg_sign").style.border = "thin solid darkred";
-        document.getElementById("errorMsg_sign").innerHTML = "<p>Password does not match</p>";
     }
 }
 

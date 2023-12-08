@@ -15,7 +15,7 @@ var hostname = "localhost";
 var password = "student";
 var database = "sfmeets";
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = 12;
          
 var StaticDirectory = path.join(__dirname, 'public');
 
@@ -338,7 +338,6 @@ app.post('/verifylogin', function (req, res) {
 
 app.post('/signup', function(req, res) {
   var newAcc = new formidable.IncomingForm();
-  console.log('ffields');
   newAcc.parse(req, function (err, ffields, files) {
     var con = mysql.createConnection( {
       host: hostname,
@@ -346,7 +345,6 @@ app.post('/signup', function(req, res) {
       password: password,
       database: database
     });
-
     console.log(ffields.pass_repeat);
     if(ffields.password.toString() != ffields.pass_repeat.toString()){
       var resstr = '<script>setCookie("failedSignup", "true", 1);';
