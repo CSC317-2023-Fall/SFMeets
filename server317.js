@@ -15,7 +15,7 @@ var hostname = "localhost";
 var password = "student";
 var database = "sfmeets";
 const bcrypt = require('bcrypt');
-const saltRounds = 12;
+const saltRounds = 10;
          
 var StaticDirectory = path.join(__dirname, 'public');
 
@@ -246,6 +246,23 @@ app.get('/editOrganization', function (req, res) {
   });
 });
 
+app.get('/createOrgEvent', function (req, res) {
+  var con = mysql.createConnection({
+    host: hostname,
+    user: username,
+    password: password,
+    database: database
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    var qq = `INSERT INTO ORGEVENTS (ORGID, NAME, LOCATION, DATE, TIME, DESCRIPTION, MAXUSERS) VALUES ('${req.query.orgid}', '${req.query.name}', '${req.query.location}', '${req.query.date}', 'testtime', '${req.query.description}, '${req.query.maxusers}')`;
+    con.query(qq, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
+
 app.get('/getInfo', function (req, res){
   var con = mysql.createConnection({
     host: hostname,
@@ -280,27 +297,27 @@ app.post('/verifylogin', function (req, res) {
       if (err) throw err;
       var qq = "SELECT * FROM ACCOUNT WHERE email='" + ffields.email + "'";
       console.log(qq);
-      console.log(err);
       con.query(qq, function (err, result, fields) {
         if (err) throw err;
         const account = result;
-        //if result is empty, go back to login page
-        if(result.length == 0){
-                
-          var resstr = '<script>setCookie("failedLogin", "true", 1);';
-
-          resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
-          resstr = resstr + 'const exp = new Date();';
-          resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
-          resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
-          resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
-          resstr = resstr + '}';
-
-          resstr = resstr + 'location.replace("/login.html"); </script>';
-          return res.send(resstr);
-        }
           compareit(ffields.password.toString(), result[0].PASSWORD.toString()).then(function(result) {
-            if(result){        
+            if(result){
+              //if result is empty, go back to login page
+              if(result.length == 0){
+                
+                var resstr = '<script>setCookie("failedLogin", "true", 1);';
+
+                resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
+                resstr = resstr + 'const exp = new Date();';
+                resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
+                resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
+                resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
+                resstr = resstr + '}';
+
+                resstr = resstr + 'location.replace("/login.html"); </script>';
+                return res.send(resstr);
+              }
+              else{
                 console.log(account);
                 var resstr = '<script>setCookie("loggedIn", "true", 14);';
                 resstr = resstr + 'setCookie("fname", "' + account[0].FIRSTNAME + '", 14);';
@@ -315,7 +332,7 @@ app.post('/verifylogin', function (req, res) {
 
                 resstr = resstr + 'location.replace("/"); </script>';
                 res.send(resstr);
-              
+              }
             }
             else{
               var resstr = '<script>setCookie("failedLogin", "true", 1);';
@@ -338,6 +355,7 @@ app.post('/verifylogin', function (req, res) {
 
 app.post('/signup', function(req, res) {
   var newAcc = new formidable.IncomingForm();
+  console.log('ffields');
   newAcc.parse(req, function (err, ffields, files) {
     var con = mysql.createConnection( {
       host: hostname,
@@ -345,20 +363,7 @@ app.post('/signup', function(req, res) {
       password: password,
       database: database
     });
-    console.log(ffields.pass_repeat);
-    if(ffields.password.toString() != ffields.pass_repeat.toString()){
-      var resstr = '<script>setCookie("failedSignup", "true", 1);';
-
-      resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
-      resstr = resstr + 'const exp = new Date();';
-      resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
-      resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
-      resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
-      resstr = resstr + '}';
-      resstr = resstr + 'location.replace("/signup.html"); </script>';
-      return res.send(resstr);
-    }
-
+    
     con.connect(function(err) {
       if(err) throw err;
       bcrypt.genSalt(saltRounds, function(err, salt){
@@ -370,23 +375,8 @@ app.post('/signup', function(req, res) {
           console.log(acc);
           con.query(acc, function(err, result, fields) {
             if(err) throw err;
-            if(result.length == 0){
-              var resstr = '<script>setCookie("failedSignup", "true", 1);';
-
-              resstr = resstr + 'function setCookie(cname, cvalue, exdays){';
-              resstr = resstr + 'const exp = new Date();';
-              resstr = resstr + 'exp.setTime(exp.getTime() + (exdays*24*69*60*1000));';
-              resstr = resstr + 'let expires = "expires=" + exp.toUTCString();';
-              resstr = resstr + 'document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";';
-              resstr = resstr + '}';
-
-              resstr = resstr + 'location.replace("/signup.html"); </script>';
-              return res.send(resstr);
-            }else{
-              console.log("Account Created");
-              res.redirect('/login.html');
-            }
-            
+            console.log("Account Created");
+            res.redirect('/');
           });
         });
       });
@@ -412,8 +402,8 @@ app.post('/updateInfo', function(req, res) {
       console.log(acc);
       con.query(acc, function(err, result, fields) {
         if(err) throw err;
-        console.log("Account Updated");
-        res.redirect("/account_page.html");
+        console.log("Account Created");
+        res.redirect('/');
       });
     });
   });
